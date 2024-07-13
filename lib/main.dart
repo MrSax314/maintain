@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
       ),
       body: Center(
         child: Image(
-          image: NetworkImage('https://miro.medium.com/v2/resize:fit:636/0*5P_Yma_xvGkSnVfM.jpg'),
+          image: AssetImage('assets/impossible_triangle.png'),
         ),
       ),
       floatingActionButton: FloatingActionButton(
