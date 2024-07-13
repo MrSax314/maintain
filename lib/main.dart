@@ -14,9 +14,7 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.red[600],
       ),
       body: Center(
-        child: Image(
-          image: AssetImage('assets/impossible_triangle.png'),
-        ),
+        child: Image.asset('assets/impossible_triangle.png')
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
