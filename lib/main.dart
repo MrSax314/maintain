@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'exercise.dart';
+import 'sset.dart';
 
 void main() => runApp(MaterialApp(
   home: Home(),
@@ -11,10 +12,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  SSet s = new SSet(1,1,1);
+  Set<SSet> t = new Set<SSet>();
+  var temp = <SSet>{};
+
   Set<Exercise> exe = {
-    Exercise('squat',{}),
-    Exercise('deadlift',{}),
-    Exercise('pull-up',{})
+    Exercise('squat'),
+    Exercise('deadlift'),
+    Exercise('pull-up')
   };
 
   @override
@@ -36,6 +41,7 @@ class _HomeState extends State<Home> {
         onPressed: () {
           setState(() {
             // ninja_level += 1;
+            exe.first.sets.add(s);
           });
         },
         child: Icon(Icons.add),
@@ -44,7 +50,24 @@ class _HomeState extends State<Home> {
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
         child: Column(
-          children: exe.map((ex) => Text('Exercise Name: ${ex.exerciseName}')).toList(),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: exe.map((ex) {
+            return Row(
+              children: [
+                Text(
+                  'Exercise Name: ${ex.exerciseName}',
+                  style: TextStyle(
+                    color: Colors.white,
+                ),),
+                Text(
+                  // ' hi',
+                  '${ex.sets.elementAt(0).reps}',
+                style: TextStyle(
+                  color: Colors.pinkAccent,
+                ),
+              ),
+            ]);
+          }).toList(),
         )
       ),
     );
