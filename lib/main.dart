@@ -17,12 +17,6 @@ class Home extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Row(
-            children: [
-              Text('hello'),
-              Text('world')
-            ],
-          ),
           Container(
             padding: EdgeInsets.all(20),
             color: Colors.cyan,
