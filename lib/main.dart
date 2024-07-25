@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'exercise.dart';
 
 void main() => runApp(MaterialApp(
   home: Home(),
@@ -10,8 +11,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-  int ninja_level = 0;
+  Set<Exercise> exe = {
+    Exercise('squat',{}),
+    Exercise('deadlift',{}),
+    Exercise('pull-up',{})
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            ninja_level += 1;
+            // ninja_level += 1;
           });
         },
         child: Icon(Icons.add),
@@ -40,74 +44,7 @@ class _HomeState extends State<Home> {
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/impossible_triangle.png'),
-                radius: 50.0,
-              ),
-            ),
-            Divider(
-              height: 90.0,
-              color: Colors.grey[800],
-            ),
-            Text(
-              'NAME',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2,
-                fontSize: 20.0,
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              'sour patch',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 20.0),
-            Text(
-              'CURRENT LEVEL',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2,
-                fontSize: 20.0,
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              '$ninja_level',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 30.0),
-            Row(
-              children: [
-                Icon(
-                  Icons.email,
-                  color: Colors.grey[400],
-                ),
-                SizedBox(width: 10.0),
-                Text(
-                  'chun.lee@gmail.com',
-                  style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 18.0,
-                    letterSpacing: 1.0,
-                  ),
-                )
-              ],
-            ),
-          ],
+          children: exe.map((ex) => Text('Exercise Name: ${ex.exerciseName}')).toList(),
         )
       ),
     );
